@@ -19,7 +19,8 @@
     "prebuild": "copyfiles -f ./src/template.handlebars ./dist/",
     "pretest": "tsc -p tsconfig.test.json",
     "test": "jasmine ./__test/{**,}/*.spec.js",
-    "docs:serve": "docsify serve docs"
+    "docs:serve": "docsify serve docs",
+    "prepare": "yarn prebuild && yarm build"
   },
   "peerDependencies": {
     "better-sqlite3": "^8.4.0",
