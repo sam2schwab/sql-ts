@@ -6,7 +6,7 @@ import * as SchemaTasks from './SchemaTasks'
 import { toNumber } from 'lodash'
 
 export async function getAllEnums (db: Knex, config: Config): Promise<Enum[]> {
-  const adapter = AdapterFactory.buildAdapter(db.client.dialect)
+  const adapter = config.adapter ?? AdapterFactory.buildAdapter(db.client.dialect)
   const allEnums = (await adapter.getAllEnums(db, config))
   return allEnums.map(e => ({
     name: e.name,

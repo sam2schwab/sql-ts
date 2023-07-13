@@ -17,7 +17,7 @@ import * as SchemaTasks from './SchemaTasks'
  * @returns {Promise<Column[]>} 
  */
 export async function getColumnsForTable (db: Knex, table: TableDefinition, config: Config): Promise<Column[]> {
-  const adapter = AdapterFactory.buildAdapter(db.client.dialect)
+  const adapter = config.adapter ?? AdapterFactory.buildAdapter(db.client.dialect)
   const columns = await adapter.getAllColumns(db, config, table.name, table.schema)
   if (config.columnSortOrder === 'alphabetical') {
     columns.sort((a, b) => a.name.localeCompare(b.name))

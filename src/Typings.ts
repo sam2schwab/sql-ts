@@ -1,5 +1,5 @@
 import { Knex } from 'knex'
-import { ColumnDefinition, TableDefinition } from './Adapters/AdapterInterface'
+import { AdapterInterface, ColumnDefinition, TableDefinition } from './Adapters/AdapterInterface'
 
 /**
  * The configuration file for creating new databases.
@@ -9,6 +9,7 @@ import { ColumnDefinition, TableDefinition } from './Adapters/AdapterInterface'
  * @extends {knex.Config}
  */
 export interface Config extends Knex.Config {
+  adapter?: AdapterInterface,
   tables?: string[],
   excludedTables?: string[],
   filename?: string,
